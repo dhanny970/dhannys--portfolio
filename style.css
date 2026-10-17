@@ -1,0 +1,797 @@
+* {
+    margin: 0;
+    padding: 0;
+    boX-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+    /* keeps section titles clear of the sticky navbar */
+}
+
+body {
+    background-color: rgb(204, 202, 202);
+    padding: 0 clamp(16px, 5vw, 70px) 70px;
+    /* was a fixed 70px 70px: too much on phones */
+}
+
+img {
+    max-width: 100%;
+}
+
+a:focus-visible {
+    outline: 3px solid #0f7b96;
+    outline-offset: 3px;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    /* lets the links drop under the name on narrow screens */
+    border-bottom: 1px solid;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(204, 202, 202);
+    position: sticky;
+    z-index: 10;
+    top: 0;
+}
+
+.options ul {
+    display: flex;
+    gap: clamp(0.25rem, 3vw, 5rem);
+    list-style: none;
+}
+
+.tags a {
+    text-decoration: none;
+    color: black;
+    margin-right: clamp(0px, 2vw, 50px);
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 8px 8px;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.tags a:hover {
+    transform: translateY(-2px);
+    /* translateX(-5deg) was invalid: degrees don't work on translate */
+}
+
+.name {
+    padding: 1.4rem 0;
+}
+
+.my-name {
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.my-name .last {
+    color: #0f7b96;
+}
+
+/* ---------- HERO ---------- */
+.first {
+    margin-top: clamp(40px, 8vw, 100px);
+}
+
+.first h2 {
+    font-weight: 500;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+    color: #0f7b96;
+    font-size: clamp(18px, 2.5vw, 23px);
+}
+
+.first p {
+    letter-spacing: 2px;
+    font-size: clamp(20px, 3.5vw, 25px);
+    margin-top: 20px;
+}
+
+.first p span {
+    color: #0f7b96;
+}
+
+.first h3 {
+    font-weight: 500;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+    font-size: clamp(16px, 2.2vw, 21px);
+    word-spacing: clamp(0px, 0.4vw, 5px);
+    max-width: 70ch;
+    margin-top: 12px;
+}
+
+/* ---------- MY WORKS ---------- */
+.SECTION-A {
+    padding: 20px 0;
+    border-radius: 9px;
+}
+
+.work {
+    text-align: center;
+    font-weight: 100;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+    font-size: clamp(26px, 4vw, 31px);
+}
+
+.worksection {
+    display: grid;
+    /* 2 columns on desktop, 1 on phones, with no media query needed */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    max-width: 1200px;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.worksection h2 {
+    text-align: center;
+    font-weight: 150;
+}
+
+.worksection h3 {
+    font-weight: 150;
+    margin-bottom: 7px;
+}
+
+.content img {
+    display: block;
+    width: 100%;
+    height: auto;
+    /* was 90%, which stretched the screenshots */
+    margin-bottom: 12px;
+    border-radius: 8px;
+}
+
+.sections {
+    background-color: rgb(233, 228, 228);
+    padding: clamp(16px, 3vw, 30px);
+    border-radius: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+    letter-spacing: 1px;
+    font-size: 15px;
+    border: 1px solid #e1dced;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* only lift on devices that can actually hover (not touch screens) */
+@media (hover: hover) {
+    .sections:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 14px 28px rgba(36, 27, 47, 0.6);
+    }
+}
+
+/* ---------- ABOUT ---------- */
+.SECTION-B {
+    margin-top: 15px;
+}
+
+.aboutsection {
+    background-color: rgb(5, 5, 77);
+    color: white;
+    padding: clamp(28px, 6vw, 50px) clamp(20px, 7vw, 90px);
+    font-size: 17px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+    letter-spacing: 1px;
+    font-weight: 100;
+    line-height: 30px;
+    border-radius: 17px;
+}
+
+.aboutsection p {
+    max-width: 75ch;
+}
+
+.about {
+    font-weight: 100;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+    font-size: clamp(26px, 4vw, 31px);
+    margin-bottom: 35px;
+}
+
+.about span {
+    display: inline-block;
+    color: rgb(165, 165, 165);
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+}
+
+/* ---------- CONTACT ---------- */
+.SECTION-C {
+    margin-top: 15px;
+}
+
+.contactsection {
+    font-size: 17px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+    padding: 50px 0;
+}
+
+.contactsection a {
+    text-decoration: none;
+    color: rgb(5, 5, 77);
+    font-size: clamp(16px, 4.5vw, 20px);
+    overflow-wrap: anywhere;
+    /* stops the long email address overflowing on small phones */
+}
+
+.contactsection a:hover {
+    text-decoration: underline;
+}
+
+.contact {
+    font-weight: 100;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+    font-size: clamp(26px, 4vw, 31px);
+    margin-bottom: 35px;
+}
+
+.contact span {
+    display: inline-block;
+    color: #535353;
+    font-size: 19px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+}
+
+/* renamed from .last: that class was also used on your name in the navbar,
+   so its padding and font-size were leaking onto it */
+.availability {
+    color: rgb(83, 83, 83);
+    padding: 20px 0;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+}
+
+/* ---------- SMALL SCREENS ---------- */
+@media (max-width: 600px) {
+    .navbar {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .name {
+        padding: 1rem 0 0;
+    }
+
+    .tags a {
+        font-size: 16px;
+    }
+
+    .aboutsection {
+        line-height: 26px;
+        letter-spacing: 0.5px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .sections,
+    .tags a {
+        transition: none;
+    }
+}
+
+
+/* ================= ADDITIONS ================= */
+
+/* ---------- HERO BUTTONS ---------- */
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 26px;
+    border-radius: 999px;
+    border: 2px solid #0f7b96;
+    background: #0f7b96;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    letter-spacing: 1px;
+    transition: transform 0.2s ease;
+}
+
+.btn-ghost {
+    background: transparent;
+    color: #0f7b96;
+}
+
+@media (hover: hover) {
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+}
+
+.btn:focus-visible {
+    outline: 3px solid rgb(5, 5, 77);
+    outline-offset: 3px;
+}
+
+/* ---------- SKILLS ---------- */
+.SECTION-D {
+    margin-top: 40px;
+    padding: 20px 0;
+}
+
+.skills-title {
+    font-weight: 100;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+    font-size: clamp(26px, 4vw, 31px);
+    margin-bottom: 25px;
+}
+
+.skills-title span {
+    display: inline-block;
+    color: #535353;
+    font-size: 19px;
+}
+
+.skills {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.skills li {
+    padding: 10px 20px;
+    border-radius: 999px;
+    background-color: rgb(233, 228, 228);
+    border: 1px solid #e1dced;
+    font-size: 17px;
+    letter-spacing: 1px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+}
+
+/* ---------- ABOUT: photo + intro line ---------- */
+.about-intro {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.avatar {
+    flex: none;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: grid;
+    place-items: center;
+    background: #0f7b96;
+    color: white;
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+.about-line {
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+/* ---------- FOOTER ---------- */
+.site-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+    font-size: 15px;
+}
+
+.site-footer a {
+    color: rgb(5, 5, 77);
+}
+
+@media (max-width: 600px) {
+    .about-intro {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+
+/* ---------- CONTACT LINKS ---------- */
+.contact-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    margin-top: 14px;
+}
+
+.contact-links a {
+    font-size: 17px;
+}
+
+
+/* ---------- PROJECT TECH TAGS ---------- */
+.stack {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.stack li {
+    font-size: 13px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: rgb(204, 202, 202);
+    color: rgb(5, 5, 77);
+}
+
+
+/* ================= ANIMATIONS ================= */
+
+:root {
+    --teal: #0f7b96;
+    --navy: rgb(5, 5, 77);
+    --ease: cubic-bezier(0.22, 0.7, 0.2, 1);
+}
+
+/* ---------- SCROLL PROGRESS ---------- */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: var(--teal);
+    transform: scaleX(0);
+    transform-origin: left;
+    z-index: 20;
+}
+
+/* ---------- HERO: one orchestrated entrance ---------- */
+@keyframes rise {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: none; }
+}
+
+@keyframes draw {
+    to { transform: scaleX(1); }
+}
+
+.first > * {
+    animation: rise 0.7s var(--ease) both;
+}
+.first h2 { animation-delay: 0.1s; }
+.first p  { animation-delay: 0.25s; }
+.first h3 { animation-delay: 0.4s; }
+.first .hero-actions { animation-delay: 0.55s; }
+
+/* the word "enjoy" gets underlined once the headline has landed */
+.first p span {
+    position: relative;
+    display: inline-block;
+}
+.first p span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 3px;
+    border-radius: 3px;
+    background: var(--teal);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: draw 0.7s var(--ease) 1s forwards;
+}
+
+/* ---------- NAV + BUTTON POLISH ---------- */
+.tags a {
+    position: relative;
+}
+.tags a::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: 2px;
+    height: 2px;
+    background: var(--teal);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s var(--ease);
+}
+.tags a:hover::after,
+.tags a:focus-visible::after {
+    transform: scaleX(1);
+}
+
+.btn {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+.btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+    transform: translateX(-120%);
+    z-index: -1;
+}
+@media (hover: hover) {
+    .btn:hover::before {
+        transform: translateX(120%);
+        transition: transform 0.6s var(--ease);
+    }
+}
+
+/* ---------- CAROUSEL ---------- */
+.carousel {
+    max-width: 1000px;
+    margin: 28px auto 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+}
+
+.carousel-viewport {
+    overflow: hidden;
+    border-radius: 15px;
+    touch-action: pan-y;
+    cursor: grab;
+}
+.carousel-viewport.dragging {
+    cursor: grabbing;
+}
+
+.carousel-track {
+    display: flex;
+    list-style: none;
+    transition: transform 0.7s var(--ease);
+    will-change: transform;
+}
+.carousel-track.no-anim {
+    transition: none;
+}
+
+.slide {
+    flex: 0 0 100%;
+    background-color: rgb(233, 228, 228);
+    border: 1px solid #e1dced;
+    border-radius: 15px;
+    padding: clamp(16px, 3vw, 30px);
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.slide-frame {
+    aspect-ratio: 2 / 1;
+    overflow: hidden;
+    border-radius: 8px;
+    background: rgb(204, 202, 202);
+}
+.slide-frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    -webkit-user-drag: none;
+    transform: scale(1);
+    transition: transform 6s linear;
+}
+.slide.is-active .slide-frame img {
+    transform: scale(1.06); /* slow push-in on the visible project */
+}
+
+.slide-text {
+    margin-top: 16px;
+    letter-spacing: 1px;
+    font-size: 16px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s var(--ease);
+}
+.slide.is-active .slide-text {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.25s;
+}
+.slide-text h3 {
+    font-weight: 150;
+    font-size: clamp(18px, 2.4vw, 22px);
+    margin-bottom: 6px;
+}
+.slide-text p {
+    max-width: 65ch;
+    line-height: 1.5;
+}
+
+.carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 18px;
+}
+
+.arrow {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--teal);
+    background: transparent;
+    color: var(--teal);
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.arrow:hover {
+    background: var(--teal);
+    color: white;
+}
+.arrow:active {
+    transform: scale(0.92);
+}
+.arrow:focus-visible,
+.dot:focus-visible {
+    outline: 3px solid var(--navy);
+    outline-offset: 3px;
+}
+
+.dots {
+    display: flex;
+    gap: 10px;
+}
+.dot {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border: none;
+    border-radius: 999px;
+    background: rgb(165, 165, 165);
+    cursor: pointer;
+    overflow: hidden;
+    transition: width 0.35s var(--ease), background 0.2s ease;
+}
+.dot span {
+    position: absolute;
+    inset: 0;
+    background: var(--teal);
+    transform: scaleX(0);
+    transform-origin: left;
+}
+.dot.is-active {
+    width: 44px;
+}
+.dot.is-active span {
+    transform: scaleX(1);
+}
+/* the active dot fills over the autoplay interval, so the timing is visible */
+.carousel.is-playing .dot.is-active span {
+    animation: fill var(--interval, 5s) linear forwards;
+}
+.carousel.is-paused .dot.is-active span {
+    animation-play-state: paused;
+}
+@keyframes fill {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+}
+
+/* ---------- SKILLS: pills pop in one after another ---------- */
+.skills li {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+    transition: opacity 0.5s ease, transform 0.5s var(--ease), background-color 0.2s ease, color 0.2s ease;
+    transition-delay: calc(var(--i, 0) * 120ms);
+}
+.skills.in-view li {
+    opacity: 1;
+    transform: none;
+}
+@media (hover: hover) {
+    .skills.in-view li:hover {
+        background-color: var(--teal);
+        color: white;
+        transition-delay: 0s;
+    }
+}
+
+/* ---------- ABOUT + CONTACT: reveal on scroll ---------- */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s var(--ease);
+}
+[data-reveal].in-view {
+    opacity: 1;
+    transform: none;
+}
+
+/* avatar ring pulses gently once the about section is visible */
+.avatar {
+    position: relative;
+}
+.in-view .avatar::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid var(--teal);
+    animation: ring 2.4s ease-out 3;
+}
+@keyframes ring {
+    from { transform: scale(1); opacity: 0.9; }
+    to   { transform: scale(1.5); opacity: 0; }
+}
+
+/* ---------- AVAILABILITY DOT ---------- */
+.availability {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.pulse-dot {
+    position: relative;
+    flex: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #2e9e5b;
+}
+.pulse-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #2e9e5b;
+    animation: ping 1.8s ease-out infinite;
+}
+@keyframes ping {
+    from { transform: scale(1); opacity: 0.7; }
+    to   { transform: scale(3); opacity: 0; }
+}
+
+/* ---------- REDUCED MOTION: everything visible, nothing moving ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .first > *,
+    .first p span::after,
+    .in-view .avatar::after,
+    .pulse-dot::after,
+    .carousel.is-playing .dot.is-active span {
+        animation: none;
+    }
+    .first p span::after { transform: scaleX(1); }
+    .carousel-track,
+    .slide-frame img,
+    .slide-text,
+    .skills li,
+    [data-reveal],
+    .tags a::after,
+    .btn::before {
+        transition: none;
+    }
+    .slide-frame img { transform: none !important; }
+    .slide-text,
+    .skills li,
+    [data-reveal] {
+        opacity: 1;
+        transform: none;
+    }
+    .scroll-progress { display: none; }
+}
